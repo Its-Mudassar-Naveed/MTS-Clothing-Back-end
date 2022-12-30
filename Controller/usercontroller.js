@@ -1,6 +1,6 @@
 const User = require('../Models/model')
 
-module.exports = async (req,res)=>{
+module.exports = SigninUser = async (req,res)=>{
     try{
         const {email,password} =req.body;
         await User.findone({email:email},(err,user)=>{
