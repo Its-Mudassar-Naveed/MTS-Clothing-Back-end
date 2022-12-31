@@ -4,12 +4,13 @@ const bcrypt = require("bcrypt");
 module.exports = SigninUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+    const encryptedpassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8));
     await User.findone({ email: email }, (err, user) => {
       if (user) {
-        if (password === user.password) {
+        if (encryptedpassword === user.password) {
           res.send({ message: "login sucess", user: user });
         } else {
-          res.send({ message: "wrong credentials" });
+          res.send(err,{ message: "wrong credentials" });
         }
       }
     });
