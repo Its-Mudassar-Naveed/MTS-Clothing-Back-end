@@ -1,6 +1,7 @@
 const User = require('../Models/model')
+const bcrypt = require('bcrypt');
 
-module.exports = async (req,res)=>{
+module.exports = SigninUser = async (req,res)=>{
     try{
         const {email,password} =req.body;
         await User.findone({email:email},(err,user)=>{
@@ -18,6 +19,7 @@ module.exports = async (req,res)=>{
 module.exports = SignupUser = async (req,res)=>{
     try{
         const {firstname,lastname,email,password} =req.body;
+       
         User.findOne({email:email},(err,user)=>{
             if(user){
                 res.send({message:"user already exist"})

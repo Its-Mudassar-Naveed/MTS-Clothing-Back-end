@@ -13,6 +13,6 @@ const userSchema = new mongoose.Schema({
 // autoIncrement.initialize(mongoose.connection)
 // userSchema.plugin(autoIncrement.plugin,'User')
 
-const User = new mongoose.model("User", userSchema)
+const User = new mongoose.model("users", userSchema)
 
 module.exports = User;
