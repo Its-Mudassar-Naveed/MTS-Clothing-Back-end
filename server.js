@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
-app.use('/user', Routes)
+app.use('/', Routes)
 Connection()
 // console.log(process.env.MongoDB_URI)
 
